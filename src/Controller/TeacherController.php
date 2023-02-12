@@ -3,27 +3,22 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TeacherController extends AbstractController
 {
     /**
- * @Route("/teacher/{name}" , name="app_teacher")
- */
-    #[Route('/teacher/{name}', name: 'app_teacher')]
-    public function index(): Response   
-    {   
-        return $this->render('teacher/index.html.twig', [
-            'controller_name'=>'TeacherController',
-        ]);
+     * @Route("/teacher/{name}", name="teacher_show")
+     */
+    public function showTeacher($name)
+    {
+        return $this->render('teacher/show.html.twig', [ 'name' => $name, ] );
+           
+       
     }
-    
-   public function showTeacher($name){
-return new Response("bonjour".$name);
-   }
-   
-   public function goToindex(){
-    return  $this->forward('StudentController.php::index',[]);
-   }
+
+    public function goToIndex()
+{
+    return $this->redirectToRoute('student_index');
+}
 }
