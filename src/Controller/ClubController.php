@@ -145,7 +145,7 @@ class ClubController extends AbstractController
         $form = $this->createForm(ClubType::class, $club);
         $form->handleRequest($request);
         if  ($form->isSubmitted() && $form->isValid()){
-            $repo->save($club, true); //f3oudh ladd save
+            $repo->save($club, true); //remplacer add save
             return $this->redirectToRoute('listClub');
         }
         return $this->renderForm('club/add.html.twig',[
